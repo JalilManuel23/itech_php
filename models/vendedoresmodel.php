@@ -17,7 +17,10 @@ class VendedoresModel extends Model {
 
             while($row = $query->fetch()){
                 $item = new Vendedor();
+                $item->id = $row['id'];
                 $item->nombre = $row['nombre'];
+                $item->apellido_paterno = $row['apellido_paterno'];
+                $item->apellido_materno = $row['apellido_materno'];
                 $item->fotografia    = $row['fotografia'];
                 $item->direccion  = $row['direccion'];
                 $item->telefono  = $row['telefono'];
@@ -46,7 +49,10 @@ class VendedoresModel extends Model {
             $query->execute(['id' => $id]);
 
             while($row = $query->fetch()){
+                $item->id = $row['id'];
                 $item->nombre = $row['nombre'];
+                $item->apellido_paterno = $row['apellido_paterno'];
+                $item->apellido_materno = $row['apellido_materno'];
                 $item->fotografia    = $row['fotografia'];
                 $item->direccion  = $row['direccion'];
                 $item->telefono  = $row['telefono'];
@@ -69,10 +75,12 @@ class VendedoresModel extends Model {
         // insertar datos en la BD
 
         try {
-            $query = $this->db->connect()->prepare('INSERT INTO VENDEDORES (NOMBRE, FOTOGRAFIA, DIRECCION, TELEFONO, EMAIL, FECHA_INGRESO, FECHA_ADMINISTRADOR, FECHA_VALIDACION, CONTRASENIA, CURP) VALUES(:nombre, :fotografia, :direccion, :telefono, :email, :fecha_ingreso, :fecha_administrador, :fecha_validacion, :contrasenia, :curp)');
+            $query = $this->db->connect()->prepare('INSERT INTO VENDEDORES (NOMBRE, APELLIDO_PATERNO, APELLIDO_MATERNO, FOTOGRAFIA, DIRECCION, TELEFONO, EMAIL, FECHA_INGRESO, FECHA_ADMINISTRADOR, FECHA_VALIDACION, CONTRASENIA, CURP) VALUES(:nombre, :apellido_paterno, :apellido_materno, :fotografia, :direccion, :telefono, :email, :fecha_ingreso, :fecha_administrador, :fecha_validacion, :contrasenia, :curp)');
 
             $query->execute([
                 'nombre' => $datos['nombre'], 
+                'apellido_paterno' => $datos['apellido_paterno'], 
+                'apellido_materno' => $datos['apellido_materno'], 
                 'fotografia' => $datos['fotografia'],
                 'direccion' => $datos['direccion'],
                 'telefono' => $datos['telefono'],
@@ -91,12 +99,14 @@ class VendedoresModel extends Model {
 
     // Actualizar vendedor
     public function update($item){
-        $query = $this->db->connect()->prepare("UPDATE VENDEDORES SET nombre = :nombre, fotografia = :fotografia, direccion = :direccion, telefono = :telefono, email = :email, fecha_ingreso = :fecha_ingreso, fecha_administrador = :fecha_administrador, fecha_validacion = :fecha_validacion, contrasenia = :contrasenia, curp = :curp WHERE id = :id");
+        $query = $this->db->connect()->prepare("UPDATE VENDEDORES SET nombre = :nombre, apellido_paterno = :apellido_paterno, apellido_materno = :apellido_materno, fotografia = :fotografia, direccion = :direccion, telefono = :telefono, email = :email, fecha_ingreso = :fecha_ingreso, fecha_administrador = :fecha_administrador, fecha_validacion = :fecha_validacion, contrasenia = :contrasenia, curp = :curp WHERE id = :id");
 
         try{
             $query->execute([
                 'id' => $item['id'], 
                 'nombre' => $item['nombre'], 
+                'apellido_paterno' => $item['apellido_paterno'], 
+                'apellido_materno' => $item['apellido_materno'], 
                 'fotografia' => $item['fotografia'],
                 'direccion' => $item['direccion'],
                 'telefono' => $item['telefono'],
