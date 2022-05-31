@@ -16,7 +16,6 @@ class Vendedores extends Controller {
 		$nombre = $_POST['nombre'];
 		$apellido_paterno = $_POST['apellido_paterno'];
 		$apellido_materno = $_POST['apellido_materno'];
-		$fotografia = $_POST['fotografia'];
 		$direccion = $_POST['direccion'];
 		$telefono = $_POST['telefono'];
 		$email = $_POST['email'];
@@ -29,7 +28,6 @@ class Vendedores extends Controller {
             'nombre' => $nombre, 
             'apellido_paterno' => $apellido_paterno, 
             'apellido_materno' => $apellido_materno, 
-            'fotografia' => $fotografia,
             'direccion' => $direccion,
             'telefono' => $telefono,
             'email' => $email,
@@ -110,4 +108,58 @@ class Vendedores extends Controller {
         print_r($vendedor);
     }
 
+    // Función para suspender usuarios
+    function suspender($param = null) {
+        $idVendedor = $param[0];
+        $vendedor = $this->model->getByID($idVendedor);
+
+        $tipo = $vendedor->tipo;
+
+        if($tipo == 'usuario') {
+            print_r('La suspención de usuarios solo se puede realizar por un administrador');
+        } else {
+            $valor = $param[1];
+            if($this->model->suspender($idVendedor, $valor)) {
+                echo "bien";
+            } else {
+                echo "error";
+            }
+        }
+    }
+
+    // Actulizar foto de usuario
+    function cambiar_foto() {
+        $id = $_POST['id'];
+
+        if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK) {
+            $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
+            $fileName = $_FILES['uploadedFile']['name'];
+            $fileSize = $_FILES['uploadedFile']['size'];
+            $fileType = $_FILES['uploadedFile']['type'];
+            $fileNameCmps = explode(".", $fileName);
+            $fileExtension = strtolower(end($fileNameCmps));
+
+            $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+
+            $allowedfileExtensions = array('jpg', 'gif', 'png', 'zip', 'txt', 'xls', 'doc');
+            if (in_array($fileExtension, $allowedfileExtensions)) {
+                $uploadFileDir = 'public/fotos_usuarios/';
+                $dest_path = $uploadFileDir . $newFileName;
+                 
+                if(move_uploaded_file($fileTmpPath, $dest_path))
+                {
+                    if($this->model->cambiarFoto($id, $newFileName)) {
+                        echo "bien";
+                    } else {
+                        echo "error";
+                    }
+                    $message ='Foto actualizada.';
+                }
+                else
+                {
+                  $message = 'Error al subir foto.';
+                }
+            }
+        }
+    }
 }
