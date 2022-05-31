@@ -22,7 +22,6 @@ class Vendedores extends Controller {
 		$telefono = $_POST['telefono'];
 		$email = $_POST['email'];
 		$fecha_ingreso = $_POST['fecha_ingreso'];
-		$fecha_administrador = $_POST['fecha_administrador'];
 		$contrasenia = generarContrasenia(8);;
 
         if($this->model->insert([
@@ -33,7 +32,6 @@ class Vendedores extends Controller {
             'telefono' => $telefono,
             'email' => $email,
             'fecha_ingreso' => $fecha_ingreso,
-            'fecha_administrador' => $fecha_administrador,
             'contrasenia' => $contrasenia,
             'curp' => $curp
         ])) {
@@ -169,6 +167,19 @@ class Vendedores extends Controller {
         $contrasenia = $_POST['contrasenia'];
 
         if($this->model->cambiarContrasenia($id, $contrasenia)) {
+            echo "bien";
+        } else {
+            echo "error";
+        }
+        $message ='Foto actualizada exitosamente';
+    }
+
+    // Convertir en administrador
+    function convertir_admin() {
+        $id = $_POST['id'];
+        $tipo = $_POST['tipo'];
+
+        if($this->model->convertirAdmin($id, $tipo)) {
             echo "bien";
         } else {
             echo "error";

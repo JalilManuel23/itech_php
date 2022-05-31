@@ -76,7 +76,7 @@ class VendedoresModel extends Model {
         // insertar datos en la BD
 
         try {
-            $query = $this->db->connect()->prepare('INSERT INTO VENDEDORES (NOMBRE, APELLIDO_PATERNO, APELLIDO_MATERNO, DIRECCION, TELEFONO, EMAIL, FECHA_INGRESO, FECHA_ADMINISTRADOR, CONTRASENIA, CURP) VALUES(:nombre, :apellido_paterno, :apellido_materno, :direccion, :telefono, :email, :fecha_ingreso, :fecha_administrador, :contrasenia, :curp)');
+            $query = $this->db->connect()->prepare('INSERT INTO VENDEDORES (NOMBRE, APELLIDO_PATERNO, APELLIDO_MATERNO, DIRECCION, TELEFONO, EMAIL, FECHA_INGRESO, CONTRASENIA, CURP) VALUES(:nombre, :apellido_paterno, :apellido_materno, :direccion, :telefono, :email, :fecha_ingreso, :contrasenia, :curp)');
 
             $query->execute([
                 'nombre' => $datos['nombre'], 
@@ -86,7 +86,6 @@ class VendedoresModel extends Model {
                 'telefono' => $datos['telefono'],
                 'email' => $datos['email'],
                 'fecha_ingreso' => $datos['fecha_ingreso'],
-                'fecha_administrador' => $datos['fecha_administrador'],
                 'contrasenia' => $datos['contrasenia'],
                 'curp' => $datos['curp']
             ]);
@@ -172,6 +171,21 @@ class VendedoresModel extends Model {
             $query->execute([
                 'id' => $id,
                 'contrasenia' => $contrasenia,
+            ]);
+            return true;
+        }catch(PDOException $e){
+            return false;
+        }
+    }
+
+    // Convertir admin
+    public function convertirAdmin($id, $valor) {
+        $query = $this->db->connect()->prepare("UPDATE VENDEDORES SET tipo = :tipo WHERE id = :id");
+
+        try{
+            $query->execute([
+                'id' => $id,
+                'tipo' => $valor,
             ]);
             return true;
         }catch(PDOException $e){
