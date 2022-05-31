@@ -1,5 +1,7 @@
 <?php
 
+include './helpers/generarContrasenia.php';
+
 class Vendedores extends Controller {
 
 	function __construct() {
@@ -22,7 +24,7 @@ class Vendedores extends Controller {
 		$fecha_ingreso = $_POST['fecha_ingreso'];
 		$fecha_administrador = $_POST['fecha_administrador'];
 		$fecha_validacion = $_POST['fecha_validacion'];
-		$contrasenia = $_POST['contrasenia'];
+		$contrasenia = generarContrasenia(8);;
 
         if($this->model->insert([
             'nombre' => $nombre, 
@@ -161,5 +163,18 @@ class Vendedores extends Controller {
                 }
             }
         }
+    }
+
+    // Cambiar contraseña
+    function cambiar_contrasenia() {
+        $id = $_POST['id'];
+        $contrasenia = $_POST['contrasenia'];
+
+        if($this->model->cambiarContrasenia($id, $contrasenia)) {
+            echo "bien";
+        } else {
+            echo "error";
+        }
+        $message ='Foto actualizada exitosamente';
     }
 }

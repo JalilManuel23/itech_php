@@ -164,5 +164,20 @@ class VendedoresModel extends Model {
             return false;
         }
     }
+
+    // Cambiar contraseña
+    public function cambiarContrasenia($id, $contrasenia) {
+        $query = $this->db->connect()->prepare("UPDATE VENDEDORES SET contrasenia = :contrasenia WHERE id = :id");
+
+        try{
+            $query->execute([
+                'id' => $id,
+                'contrasenia' => $contrasenia,
+            ]);
+            return true;
+        }catch(PDOException $e){
+            return false;
+        }
+    }
 }
 ?>
