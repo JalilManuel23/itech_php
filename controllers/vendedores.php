@@ -14,6 +14,8 @@ class Vendedores extends Controller {
 	function agregar() {
 		$curp = $_POST['curp'];
 		$nombre = $_POST['nombre'];
+		$apellido_paterno = $_POST['apellido_paterno'];
+		$apellido_materno = $_POST['apellido_materno'];
 		$fotografia = $_POST['fotografia'];
 		$direccion = $_POST['direccion'];
 		$telefono = $_POST['telefono'];
@@ -25,6 +27,8 @@ class Vendedores extends Controller {
 
         if($this->model->insert([
             'nombre' => $nombre, 
+            'apellido_paterno' => $apellido_paterno, 
+            'apellido_materno' => $apellido_materno, 
             'fotografia' => $fotografia,
             'direccion' => $direccion,
             'telefono' => $telefono,
@@ -46,6 +50,8 @@ class Vendedores extends Controller {
 		$id = $_POST['id'];
 		$curp = $_POST['curp'];
 		$nombre = $_POST['nombre'];
+        $apellido_paterno = $_POST['apellido_paterno'];
+		$apellido_materno = $_POST['apellido_materno'];
 		$fotografia = $_POST['fotografia'];
 		$direccion = $_POST['direccion'];
 		$telefono = $_POST['telefono'];
@@ -58,6 +64,8 @@ class Vendedores extends Controller {
         if($this->model->update([
             'id' => $id, 
             'nombre' => $nombre, 
+            'apellido_paterno' => $apellido_paterno, 
+            'apellido_materno' => $apellido_materno, 
             'fotografia' => $fotografia,
             'direccion' => $direccion,
             'telefono' => $telefono,
