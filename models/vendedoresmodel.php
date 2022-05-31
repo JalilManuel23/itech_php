@@ -76,7 +76,7 @@ class VendedoresModel extends Model {
         // insertar datos en la BD
 
         try {
-            $query = $this->db->connect()->prepare('INSERT INTO VENDEDORES (NOMBRE, APELLIDO_PATERNO, APELLIDO_MATERNO, DIRECCION, TELEFONO, EMAIL, FECHA_INGRESO, FECHA_ADMINISTRADOR, FECHA_VALIDACION, CONTRASENIA, CURP) VALUES(:nombre, :apellido_paterno, :apellido_materno, :direccion, :telefono, :email, :fecha_ingreso, :fecha_administrador, :fecha_validacion, :contrasenia, :curp)');
+            $query = $this->db->connect()->prepare('INSERT INTO VENDEDORES (NOMBRE, APELLIDO_PATERNO, APELLIDO_MATERNO, DIRECCION, TELEFONO, EMAIL, FECHA_INGRESO, FECHA_ADMINISTRADOR, CONTRASENIA, CURP) VALUES(:nombre, :apellido_paterno, :apellido_materno, :direccion, :telefono, :email, :fecha_ingreso, :fecha_administrador, :contrasenia, :curp)');
 
             $query->execute([
                 'nombre' => $datos['nombre'], 
@@ -87,7 +87,6 @@ class VendedoresModel extends Model {
                 'email' => $datos['email'],
                 'fecha_ingreso' => $datos['fecha_ingreso'],
                 'fecha_administrador' => $datos['fecha_administrador'],
-                'fecha_validacion' => $datos['fecha_validacion'],
                 'contrasenia' => $datos['contrasenia'],
                 'curp' => $datos['curp']
             ]);

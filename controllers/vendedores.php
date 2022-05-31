@@ -23,7 +23,6 @@ class Vendedores extends Controller {
 		$email = $_POST['email'];
 		$fecha_ingreso = $_POST['fecha_ingreso'];
 		$fecha_administrador = $_POST['fecha_administrador'];
-		$fecha_validacion = $_POST['fecha_validacion'];
 		$contrasenia = generarContrasenia(8);;
 
         if($this->model->insert([
@@ -35,7 +34,6 @@ class Vendedores extends Controller {
             'email' => $email,
             'fecha_ingreso' => $fecha_ingreso,
             'fecha_administrador' => $fecha_administrador,
-            'fecha_validacion' => $fecha_validacion,
             'contrasenia' => $contrasenia,
             'curp' => $curp
         ])) {
