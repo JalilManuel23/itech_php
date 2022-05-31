@@ -37,9 +37,9 @@ class Vendedores extends Controller {
             'contrasenia' => $contrasenia,
             'curp' => $curp
         ])) {
-            echo "Nuevo vendedor agregado";
+            echo "Vendedor agregado exitosamente";
         } else {
-            echo "Error";
+            echo "Hubo un error, ¡Intente de nuevo!";
         }
 	}
 
@@ -74,9 +74,9 @@ class Vendedores extends Controller {
             'contrasenia' => $contrasenia,
             'curp' => $curp
         ])){            
-            echo "Vendedor actualizado";
+            echo "Vendedor actualizado exitosamente";
         }else{
-            echo "Error al actualizar vendedor";
+            echo "Hubo un error, ¡Intente de nuevo!";
         }
     }
 
@@ -85,10 +85,10 @@ class Vendedores extends Controller {
         $id = $param[0];
 
         if($this->model->delete($id)){
-            echo "Vendedor eliminado correctamente";
+            echo "Vendedor eliminado exitosamente";
         }else{
             // mensaje de error
-            echo "No se pudo eliminar el vendedor";
+            echo "Hubo un error, ¡Intente de nuevo!";
         }
     }
 
@@ -153,11 +153,11 @@ class Vendedores extends Controller {
                     } else {
                         echo "error";
                     }
-                    $message ='Foto actualizada.';
+                    $message ='Foto actualizada exitosamente';
                 }
                 else
                 {
-                  $message = 'Error al subir foto.';
+                  $message = 'Hubo un error, ¡Intente de nuevo!';
                 }
             }
         }
