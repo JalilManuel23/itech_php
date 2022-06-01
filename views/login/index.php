@@ -17,7 +17,7 @@
 <body>
 <nav class="navbar navbar-expand-lg" style="background-color: #014F86;">
 <a class="navbar-brand" href="../main/index.php">
-    <img src="../images/logoitech.png" id="logo" width="70" height="65" class="d-inline-block" alt=""> ITECH
+    <img src="<?php echo constant('URL');?>/public/images/logoitech.png" id="logo" width="70" height="65" class="d-inline-block" alt=""> ITECH
 
   </a>  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white;">
     <span><i class="fas fa-bars"></i></span>
@@ -117,12 +117,21 @@
 </body>
 
 <script src="https://kit.fontawesome.com/4e20857604.js" crossorigin="anonymous"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
-<script src="script.js"></script>
+<!-- <script src="./script.js"></script> -->
 <script>
+  const switchers = [...document.querySelectorAll('.switcher')]
+
+  switchers.forEach(item => {
+    item.addEventListener('click', function() {
+      switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+      this.parentElement.classList.add('is-active')
+    })
+  })
+
     gsap.from("#logo", {duration: 3, x: 300, opacity: 0, scale: 0.5});
 </script>
 

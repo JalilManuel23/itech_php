@@ -1,12 +1,12 @@
 <?php
 
-class Main extends Controller {
+class Login extends Controller {
 
 	function __construct() {
 		parent::__construct();
 	}	
 	
 	function render() {
-		$this->view->render('main/index');
+		$this->view->render('login/index');
     }
 }
