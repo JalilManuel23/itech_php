@@ -35,7 +35,7 @@
    
    </div> 
 
-   <form class="passchange">
+   <form class="passchange" method="POST" action="<?php echo constant('URL');?>vendedores/cambiar_contrasenia">
   <div class="form-group">
     <label class="font-weight-bold">Contraseña</label>
     <input type="pass" class="form-control" required>
@@ -43,7 +43,8 @@
   </div>
   <div class="form-group">
     <label class="font-weight-bold">Confirmar contraseña</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" required>
+    <input type="hidden" name="id" value=<?php echo $this->id;?>>
+    <input type="password" class="form-control" id="exampleInputPassword1" required name="contrasenia">
 </div>
 <div class="text-center"> 
 <button type="submit" id="btnsub" class="btn btn-primary">Cambiar contraseña</button>

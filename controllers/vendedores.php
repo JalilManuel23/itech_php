@@ -177,10 +177,12 @@ class Vendedores extends Controller {
         $contrasenia = $_POST['contrasenia'];
 
         if($this->model->cambiarContrasenia($id, $contrasenia)) {
-            echo "bien";
-        } else {
-            echo "error";
-        }
+            ?>
+            <script>
+                window.location.replace("<?php echo constant('URL');?>admin");
+            </script>
+            <?php
+        } 
         $message ='Foto actualizada exitosamente';
     }
 
