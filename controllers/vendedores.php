@@ -136,6 +136,7 @@ class Vendedores extends Controller {
         $id = $_POST['id'];
 
         if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK) {
+            echo "d";
             $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
             $fileName = $_FILES['uploadedFile']['name'];
             $fileSize = $_FILES['uploadedFile']['size'];
@@ -145,7 +146,7 @@ class Vendedores extends Controller {
 
             $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
 
-            $allowedfileExtensions = array('jpg', 'gif', 'png', 'zip', 'txt', 'xls', 'doc');
+            $allowedfileExtensions = array('jpg', 'gif', 'png', 'zip', 'txt', 'xls', 'doc', 'jpeg');
             if (in_array($fileExtension, $allowedfileExtensions)) {
                 $uploadFileDir = 'public/fotos_usuarios/';
                 $dest_path = $uploadFileDir . $newFileName;
@@ -153,15 +154,18 @@ class Vendedores extends Controller {
                 if(move_uploaded_file($fileTmpPath, $dest_path))
                 {
                     if($this->model->cambiarFoto($id, $newFileName)) {
-                        echo "bien";
-                    } else {
-                        echo "error";
-                    }
-                    $message ='Foto actualizada exitosamente';
+                        session_start();
+                        $_SESSION['foto'] = $newFileName;
+                    ?>
+                        <script>
+                            window.location.replace("<?php echo constant('URL');?>cambiar_foto");
+                        </script>
+                    <?php
+                    } 
                 }
                 else
                 {
-                  $message = 'Hubo un error, ¡Intente de nuevo!';
+                  echo 'Hubo un error, ¡Intente de nuevo!';
                 }
             }
         }
@@ -207,6 +211,7 @@ class Vendedores extends Controller {
             $_SESSION['id_usuario'] = $vendedor->id;
             $_SESSION['nombre'] = $vendedor->nombre;
             $_SESSION['tipo'] = $tipo;
+            $_SESSION['foto'] = $vendedor->fotografia;
 
             if($tipo == 'usuario') {
             ?>

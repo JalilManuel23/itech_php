@@ -26,12 +26,18 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
 
+    <style>
+        .default-img {
+            border-radius: 50%;
+        }
+    </style>
+
     <title>Actualizar Imagen de Perfil </title>
 </head>
 
 <body>
     <nav class="navbar sticky-top navbar-expand-lg">
-        <a class="navbar-brand" href="#"><img src="../assets/logoitech.png" alt="Logotipo Itech" height="50"> ITECH</a>
+        <a class="navbar-brand" href="#"><img src="<?php echo constant('URL');?>public/images/logoitech.png" alt="Logotipo Itech" height="50"> ITECH</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon icono-menu"></span>
@@ -63,13 +69,13 @@
         <h1 class="text-center bienvenido pb-3">Actualizar Foto de Perfil</h1>
         <h3 class="text-center intro-bienvenida">Selecciona una nueva imagen de perfil</h3>
         <div class="d-flex justify-content-center mx-3 my-4">
-            <form class="mx-1 my-3 form-cambio-pass px-5 py-4">
+            <form class="mx-1 my-3 form-cambio-pass px-5 py-4" method="post" action="<?php echo constant('URL'); ?>vendedores/cambiar_foto" enctype="multipart/form-data">
                 <div class="form-row">
                     <div class="col-12 mb-3">
                         <label for="">Imagen de perfil actual: </label>
                     </div>
                     <div class="col-12 mb-3 d-flex justify-content-center">
-                        <img src="<?php echo constant('URL'); ?>/public/assets/default-user.png" alt="Foto de Perfil de Usuario" class="default-img"
+                        <img src="<?php echo constant('URL'); ?>/public/fotos_usuarios/<?php echo $this->foto; ?>" alt="Foto de Perfil de Usuario" class="default-img"
                             width="150">
                     </div>
                 </div>
@@ -78,9 +84,11 @@
                         <label for="">Nueva imagen de perfil: </label>
                     </div>
                     <div class="form-group mb-3">
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input type="hidden" name="id" value=<?php echo $this->id_usuario; ?>>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="uploadedFile">
                     </div>
                 </div>
+                <button type="submit" class="btn btn-modificar">Guardar</button>
             </form>
         </div>
     </div>

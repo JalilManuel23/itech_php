@@ -31,7 +31,7 @@
 
 <body>
     <nav class="navbar sticky-top navbar-expand-lg">
-        <a class="navbar-brand" href="#"><img src="<?php echo constant('URL');?>/public/images/logoitech.png" alt="Logotipo Itech" height="50"> ITECH</a>
+        <a class="navbar-brand" href="#"><img src="<?php echo constant('URL');?>public/images/logoitech.png" alt="Logotipo Itech" height="50"> ITECH</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon icono-menu"></span>
@@ -48,8 +48,8 @@
                         Configuración
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Cambiar imagen de perfil</a>
-                        <a class="dropdown-item" href="#">Cambiar contraseña</a>
+                        <a class="dropdown-item" href="<?php echo constant('URL');?>cambiar_foto">Cambiar imagen de perfil</a>
+                        <a class="dropdown-item" href="<?php echo constant('URL');?>cambiar_contrasenia">Cambiar contraseña</a>
                     </div>
                 </li>
                 <li class="nav-item mx-2">
