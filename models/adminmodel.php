@@ -30,6 +30,7 @@ class AdminModel extends Model {
                 $item->fecha_validacion  = $row['fecha_validacion'];
                 $item->contrasenia  = $row['contrasenia'];
                 $item->curp  = $row['curp'];
+                $item->estatus  = $row['estatus'];
 
                 array_push($items, $item);
             }
@@ -63,6 +64,7 @@ class AdminModel extends Model {
                 $item->contrasenia  = $row['contrasenia'];
                 $item->curp  = $row['curp'];
                 $item->tipo  = $row['tipo'];
+                $item->estatus  = $row['estatus'];
             }
 
             return $item;
@@ -94,6 +96,7 @@ class AdminModel extends Model {
                 $item->contrasenia  = $row['contrasenia'];
                 $item->curp  = $row['curp'];
                 $item->tipo  = $row['tipo'];
+                $item->estatus  = $row['estatus'];
             }
 
             return $item;

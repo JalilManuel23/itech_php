@@ -83,10 +83,11 @@ class Vendedores extends Controller {
         $id = $param[0];
 
         if($this->model->delete($id)){
-            echo "Vendedor eliminado exitosamente";
-        }else{
-            // mensaje de error
-            echo "Hubo un error, ¡Intente de nuevo!";
+            ?>
+            <script>
+                window.location.replace("<?php echo constant('URL');?>admin");
+            </script>
+        <?php
         }
     }
 
@@ -114,17 +115,19 @@ class Vendedores extends Controller {
         $idVendedor = $param[0];
         $vendedor = $this->model->getByID($idVendedor);
 
-        $tipo = $vendedor->tipo;
+        session_start();
 
-        if($tipo == 'usuario') {
+        if($_SESSION['tipo'] == 'usuario') {
             print_r('La suspención de usuarios solo se puede realizar por un administrador');
         } else {
             $valor = $param[1];
             if($this->model->suspender($idVendedor, $valor)) {
-                echo "bien";
-            } else {
-                echo "error";
-            }
+                ?>
+                    <script>
+                        window.location.replace("<?php echo constant('URL');?>admin");
+                    </script>
+                <?php
+            } 
         }
     }
 

@@ -90,8 +90,18 @@
                         <td>
                             <div class="botones">
                                 <button type="button" class="btn btn-modificar">Modificar</button>
-                                <button type="button" class="btn btn-suspender">Suspender</button>
-                                <button type="button" class="btn btn-eliminar">Eliminar</button>
+                                <?php
+                                if($vendedor->estatus == 1) {
+                                ?>
+                                    <a href="<?php echo constant('URL');?>vendedores/suspender/<?php echo $vendedor->id; ?>/0" type="button" class="btn btn-suspender">Suspender</a>
+                                <?php
+                                } else {
+                                ?>
+                                    <a href="<?php echo constant('URL');?>vendedores/suspender/<?php echo $vendedor->id; ?>/1" type="button" class="btn btn-suspender">Activar</a>
+                                <?php
+                                }
+                                ?>
+                                <a href="<?php echo constant('URL');?>vendedores/eliminar/<?php echo $vendedor->id; ?>" type="button" class="btn btn-eliminar">Eliminar</a>
                             </div>
                         </td>
                     </tr>
