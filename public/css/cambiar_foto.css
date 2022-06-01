@@ -1,0 +1,50 @@
+/* Navbar*/ 
+nav {
+    position: sticky;
+    background-color: #014f86 !important;
+    color: white !important;
+    font-family: 'Roboto';
+}
+
+nav a{
+    color: white;
+}
+
+nav a:hover{
+    color: white;
+    text-decoration: underline !important;
+}
+
+nav .dropdown-menu{
+    background-color: #89C2D9 !important;
+}
+
+nav .dropdown-menu a{
+    text-decoration: none !important;
+    font-weight: normal !important;
+}
+
+nav .dropdown-menu a:hover{
+    background-color: #2A6F97 !important;
+    color: white;
+}
+
+/* Titulo */
+.bienvenido{
+    font-family: 'Poppins';
+    font-size: xx-large;
+}
+
+.intro-bienvenida{
+    font-family: 'Roboto';
+    font-size: large;
+}
+
+/* Formulario */
+.form-cambio-pass{
+    background: rgb(252, 252, 252);
+    border: #CDDBEF;
+    box-shadow: 1px 1px 20px 5px #CDDBEF;
+    border-radius: 30px;
+    font-family: 'Roboto';
+}

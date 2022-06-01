@@ -1,0 +1,103 @@
+/* Navbar*/
+nav {
+    position: sticky;
+    background-color: #014f86 !important;
+    color: white !important;
+    font-family: 'Roboto';
+}
+
+nav a {
+    color: white;
+}
+
+nav a:hover {
+    color: white;
+    text-decoration: underline !important;
+}
+
+nav .dropdown-menu {
+    background-color: #89C2D9 !important;
+}
+
+nav .dropdown-menu a {
+    text-decoration: none !important;
+    font-weight: normal !important;
+}
+
+nav .dropdown-menu a:hover {
+    background-color: #2A6F97 !important;
+    color: white;
+}
+
+/* Titulo */
+.bienvenido {
+    font-family: 'Poppins';
+    font-size: xx-large;
+}
+
+.intro-bienvenida {
+    font-family: 'Roboto';
+    font-size: large;
+}
+
+/* Tabla Vendedores */
+.div-lista-vendedores {
+    background: rgb(252, 252, 252);
+    border: #CDDBEF;
+    box-shadow: 1px 1px 20px 5px #CDDBEF;
+    border-radius: 30px;
+    font-family: 'Roboto';
+}
+
+.table {
+    margin-bottom: 0 !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.table td,
+.table th {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-left: 0.35rem !important;
+    padding-right: 0.35rem !important;
+    vertical-align: middle !important;
+    border-top: 1.5px solid #89C2D9 !important;
+}
+
+
+.table thead th {
+    vertical-align: middle !important;
+    border-bottom: 3px solid #89C2D9 !important;
+}
+
+.botones {
+    display: inline;
+
+}
+
+.btn-suspender {
+    background: #ffd166;
+}
+
+.btn-suspender:hover {
+    background: #f5af0d;
+}
+
+.btn-modificar {
+    background: #61a5c2;
+}
+
+.btn-modificar:hover {
+    background: #3b7b97;
+    color: white;
+}
+
+.btn-eliminar {
+    background: #d65869;
+}
+
+.btn-eliminar:hover {
+    background: #c2374a;
+    color: white;
+}

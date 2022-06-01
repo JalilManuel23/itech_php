@@ -1,0 +1,69 @@
+
+nav {
+    position: sticky;
+    background-color: #014f86 !important;
+    color: white !important;
+    font-family: 'Roboto';
+}
+
+nav a{
+    color: white;
+}
+
+nav a:hover{
+    color: white;
+    text-decoration: underline !important;
+}
+
+nav .dropdown-menu{
+    background-color: #89C2D9 !important;
+}
+
+nav .dropdown-menu a{
+    text-decoration: none !important;
+    font-weight: normal !important;
+}
+
+nav .dropdown-menu a:hover{
+    background-color: #2A6F97 !important;
+    color: white;
+}
+
+.btn-logout{
+    background-color: #61A5C2;
+}
+
+.btn-logout:hover{
+    text-decoration: underline !important;
+    font-weight: bold;
+}
+
+.icono-menu{
+    color: white !important;
+}
+
+.bienvenido{
+    font-family: 'Poppins';
+    font-size: xx-large;
+}
+
+.intro-bienvenida{
+    font-family: 'Roboto';
+    font-size: large;
+}
+
+.form-info-user{
+    background: rgb(252, 252, 252);
+    border: #CDDBEF;
+    box-shadow: 1px 1px 20px 5px #CDDBEF;
+    border-radius: 30px;
+}
+
+.info-user{
+    font-family: 'Roboto';
+}
+
+form input:disabled{
+    background: #e2f0f8 !important;
+    border: 1px solid #a9d6e5 !important;
+}
