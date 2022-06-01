@@ -198,13 +198,32 @@ class Vendedores extends Controller {
         if($this->model->iniciarSesion($usuario, $contrasenia)) {
             $vendedor = $this->model->getByEmail($usuario);
 
+            $tipo = $vendedor->tipo;
+
             session_start();
             $_SESSION['id_usuario'] = $vendedor->id;
-            $_SESSION['tipo'] = $vendedor->tipo;
+            $_SESSION['tipo'] = $tipo;
 
-            echo "correcto";
+            if($tipo == 'usuario') {
+            ?>
+                <script>
+                    window.location.replace("<?php echo constant('URL');?>inicio_user");
+                </script>
+            <?php
+            } elseif($tipo == 'admin') {
+            ?>
+                <script>
+                    window.location.replace("<?php echo constant('URL');?>admin");
+                </script>
+            <?php
+            }
         } else {
-            echo "no correcto";
+            ?>
+            <script>
+                window.location.replace("<?php echo constant('URL');?>login");
+            </script>
+        <?php
         }
     }
 }
+?>

@@ -39,7 +39,7 @@
         Iniciar Sesión
         <span class="underline"></span>
       </button>
-      <form class="form form-login" method="POST" action="<?php echo constant('URL');?>/vendedores/iniciar_sesion">
+      <form class="form form-login" method="POST" action="<?php echo constant('URL');?>vendedores/iniciar_sesion">
         <fieldset>
           <legend>Ingresa tu usuario y contraseña para acceder a tu cuenta</legend>
           <div class="input-block">
