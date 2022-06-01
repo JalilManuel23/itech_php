@@ -39,16 +39,16 @@
         Iniciar Sesión
         <span class="underline"></span>
       </button>
-      <form class="form form-login">
+      <form class="form form-login" method="POST" action="<?php echo constant('URL');?>/vendedores/iniciar_sesion">
         <fieldset>
           <legend>Ingresa tu usuario y contraseña para acceder a tu cuenta</legend>
           <div class="input-block">
             <label for="login-email">Correo Electrónico:</label>
-            <input id="login-email" type="email" required>
+            <input id="login-email" type="email" required name="email">
           </div>
           <div class="input-block">
             <label for="login-password">Contraseña:</label>
-            <input id="login-password" type="password" required>
+            <input id="login-password" type="password" required name="contrasenia">
           </div>
         </fieldset>
         <button type="submit" class="btn-login">Ingresar</button>
@@ -59,7 +59,7 @@
         Registrarse
         <span class="underline"></span>
       </button>
-      <form class="form form-signup">
+      <form class="form form-signup" action="<?php echo constant('URL');?>/vendedores/agregar" method="POST">
         <fieldset>
           <legend>Por favor ingresa los datos que se te piden</legend>
           
@@ -68,31 +68,35 @@
         
           <div class="input-block col">
             <label for="signup-name">Nombre:</label>
-            <input id="signup-name" type="text" required>
+            <input id="signup-name" type="text" required name="nombre">
           </div>
           <div class="input-block col">
-            <label for="signup-last">Apellidos:</label>
-            <input id="signup-last" type="text" required>
+            <label for="signup-last">Apellido paterno:</label>
+            <input id="signup-last" type="text" required name="apellido_paterno">
+          </div>
+          <div class="input-block col">
+            <label for="signup-last">Apellido materno:</label>
+            <input id="signup-last" type="text" required name="apellido_materno">
           </div>
 </div> 
 
           <div class="input-block">
             <label for="signup-email">Correo Electrónico:</label>
-            <input id="signup-email" type="email" required>
+            <input id="signup-email" type="email" required name="email">
           </div>
           <div class="row">
           <div class="input-block col">
             <label for="signup-curp">CURP:</label>
-            <input maxlength="18" id="signup-curp" type="text" required>
+            <input maxlength="18" id="signup-curp" type="text" required name="curp">
           </div>
           <div class="input-block col">
             <label for="signup-tel">Teléfono:</label>
-            <input id="signup-tel" type="tel"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+            <input id="signup-tel" type="tel"  required name="telefono">
           </div>
           </div>
           <div class="input-block">
             <label for="signup-add">Dirección:</label>
-            <input id="signup-add" type="text" required>
+            <input id="signup-add" type="text" required name="direccion">
           </div>
         </fieldset>
         <button type="submit" class="btn-login">Continuar</button>

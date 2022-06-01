@@ -21,7 +21,6 @@ class Vendedores extends Controller {
 		$direccion = $_POST['direccion'];
 		$telefono = $_POST['telefono'];
 		$email = $_POST['email'];
-		$fecha_ingreso = $_POST['fecha_ingreso'];
 		$contrasenia = generarContrasenia(8);;
 
         if($this->model->insert([
@@ -31,7 +30,6 @@ class Vendedores extends Controller {
             'direccion' => $direccion,
             'telefono' => $telefono,
             'email' => $email,
-            'fecha_ingreso' => $fecha_ingreso,
             'contrasenia' => $contrasenia,
             'curp' => $curp
         ])) {
