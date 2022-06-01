@@ -62,6 +62,38 @@ class VendedoresModel extends Model {
                 $item->fecha_validacion  = $row['fecha_validacion'];
                 $item->contrasenia  = $row['contrasenia'];
                 $item->curp  = $row['curp'];
+                $item->tipo  = $row['tipo'];
+            }
+
+            return $item;
+        }catch(PDOException $e){
+            return null;
+        }
+    }
+
+    // Trae los datos de un solo vendedor según su email
+    public function getByEmail($email){
+        $item = new Vendedor();
+
+        $query = $this->db->connect()->prepare("SELECT * FROM vendedores WHERE email = :email");
+        try{
+            $query->execute(['email' => $email]);
+
+            while($row = $query->fetch()){
+                $item->id = $row['id'];
+                $item->nombre = $row['nombre'];
+                $item->apellido_paterno = $row['apellido_paterno'];
+                $item->apellido_materno = $row['apellido_materno'];
+                $item->fotografia    = $row['fotografia'];
+                $item->direccion  = $row['direccion'];
+                $item->telefono  = $row['telefono'];
+                $item->email  = $row['email'];
+                $item->fecha_ingreso  = $row['fecha_ingreso'];
+                $item->fecha_administrador  = $row['fecha_administrador'];
+                $item->fecha_validacion  = $row['fecha_validacion'];
+                $item->contrasenia  = $row['contrasenia'];
+                $item->curp  = $row['curp'];
+                $item->tipo  = $row['tipo'];
             }
 
             return $item;
@@ -75,19 +107,16 @@ class VendedoresModel extends Model {
         // insertar datos en la BD
 
         try {
-            $query = $this->db->connect()->prepare('INSERT INTO VENDEDORES (NOMBRE, APELLIDO_PATERNO, APELLIDO_MATERNO, FOTOGRAFIA, DIRECCION, TELEFONO, EMAIL, FECHA_INGRESO, FECHA_ADMINISTRADOR, FECHA_VALIDACION, CONTRASENIA, CURP) VALUES(:nombre, :apellido_paterno, :apellido_materno, :fotografia, :direccion, :telefono, :email, :fecha_ingreso, :fecha_administrador, :fecha_validacion, :contrasenia, :curp)');
+            $query = $this->db->connect()->prepare('INSERT INTO VENDEDORES (NOMBRE, APELLIDO_PATERNO, APELLIDO_MATERNO, DIRECCION, TELEFONO, EMAIL, FECHA_INGRESO, CONTRASENIA, CURP) VALUES(:nombre, :apellido_paterno, :apellido_materno, :direccion, :telefono, :email, :fecha_ingreso, :contrasenia, :curp)');
 
             $query->execute([
                 'nombre' => $datos['nombre'], 
                 'apellido_paterno' => $datos['apellido_paterno'], 
                 'apellido_materno' => $datos['apellido_materno'], 
-                'fotografia' => $datos['fotografia'],
                 'direccion' => $datos['direccion'],
                 'telefono' => $datos['telefono'],
                 'email' => $datos['email'],
                 'fecha_ingreso' => $datos['fecha_ingreso'],
-                'fecha_administrador' => $datos['fecha_administrador'],
-                'fecha_validacion' => $datos['fecha_validacion'],
                 'contrasenia' => $datos['contrasenia'],
                 'curp' => $datos['curp']
             ]);
@@ -103,7 +132,6 @@ class VendedoresModel extends Model {
 
         try{
             $query->execute([
-                'id' => $item['id'], 
                 'nombre' => $item['nombre'], 
                 'apellido_paterno' => $item['apellido_paterno'], 
                 'apellido_materno' => $item['apellido_materno'], 
@@ -134,6 +162,78 @@ class VendedoresModel extends Model {
         }catch(PDOException $e){
             return false;
         }
+    }
+
+    // Suspender usuario
+    public function suspender($id, $valor) {
+        $query = $this->db->connect()->prepare("UPDATE VENDEDORES SET estatus = :estatus WHERE id = :id");
+
+        try{
+            $query->execute([
+                'id' => $id,
+                'estatus' => $valor,
+            ]);
+            return true;
+        }catch(PDOException $e){
+            return false;
+        }
+    }
+
+    // Cambiar fotografía
+    public function cambiarFoto($id, $foto) {
+        $query = $this->db->connect()->prepare("UPDATE VENDEDORES SET fotografia = :foto WHERE id = :id");
+
+        try{
+            $query->execute([
+                'id' => $id,
+                'foto' => $foto,
+            ]);
+            return true;
+        }catch(PDOException $e){
+            return false;
+        }
+    }
+
+    // Cambiar contraseña
+    public function cambiarContrasenia($id, $contrasenia) {
+        $query = $this->db->connect()->prepare("UPDATE VENDEDORES SET contrasenia = :contrasenia WHERE id = :id");
+
+        try{
+            $query->execute([
+                'id' => $id,
+                'contrasenia' => $contrasenia,
+            ]);
+            return true;
+        }catch(PDOException $e){
+            return false;
+        }
+    }
+
+    // Convertir admin
+    public function convertirAdmin($id, $valor) {
+        $query = $this->db->connect()->prepare("UPDATE VENDEDORES SET tipo = :tipo WHERE id = :id");
+
+        try{
+            $query->execute([
+                'id' => $id,
+                'tipo' => $valor,
+            ]);
+            return true;
+        }catch(PDOException $e){
+            return false;
+        }
+    }
+
+    // Iniciar sesión
+    public function iniciarSesion($email, $contrasenia) {
+        $query = $this->db->connect()->prepare("SELECT COUNT(*) AS total FROM vendedores WHERE email = :email AND contrasenia = :contrasenia");
+
+        $query->execute([
+            'email' => $email,
+            'contrasenia' => $contrasenia
+        ]);
+
+        return $query->fetchColumn(); 
     }
 }
 ?>

@@ -1,5 +1,7 @@
 <?php
 
+include './helpers/generarContrasenia.php';
+
 class Vendedores extends Controller {
 
 	function __construct() {
@@ -16,32 +18,26 @@ class Vendedores extends Controller {
 		$nombre = $_POST['nombre'];
 		$apellido_paterno = $_POST['apellido_paterno'];
 		$apellido_materno = $_POST['apellido_materno'];
-		$fotografia = $_POST['fotografia'];
 		$direccion = $_POST['direccion'];
 		$telefono = $_POST['telefono'];
 		$email = $_POST['email'];
 		$fecha_ingreso = $_POST['fecha_ingreso'];
-		$fecha_administrador = $_POST['fecha_administrador'];
-		$fecha_validacion = $_POST['fecha_validacion'];
-		$contrasenia = $_POST['contrasenia'];
+		$contrasenia = generarContrasenia(8);;
 
         if($this->model->insert([
             'nombre' => $nombre, 
             'apellido_paterno' => $apellido_paterno, 
             'apellido_materno' => $apellido_materno, 
-            'fotografia' => $fotografia,
             'direccion' => $direccion,
             'telefono' => $telefono,
             'email' => $email,
             'fecha_ingreso' => $fecha_ingreso,
-            'fecha_administrador' => $fecha_administrador,
-            'fecha_validacion' => $fecha_validacion,
             'contrasenia' => $contrasenia,
             'curp' => $curp
         ])) {
-            echo "Nuevo vendedor agregado";
+            echo "Vendedor agregado exitosamente";
         } else {
-            echo "Error";
+            echo "Hubo un error, ¡Intente de nuevo!";
         }
 	}
 
@@ -61,6 +57,8 @@ class Vendedores extends Controller {
 		$fecha_validacion = $_POST['fecha_validacion'];
 		$contrasenia = $_POST['contrasenia'];
 
+        unset($_SESSION['id_usuario']);
+
         if($this->model->update([
             'id' => $id, 
             'nombre' => $nombre, 
@@ -76,9 +74,9 @@ class Vendedores extends Controller {
             'contrasenia' => $contrasenia,
             'curp' => $curp
         ])){            
-            echo "Vendedor actualizado";
+            echo "Vendedor actualizado exitosamente";
         }else{
-            echo "Error al actualizar vendedor";
+            echo "Hubo un error, ¡Intente de nuevo!";
         }
     }
 
@@ -87,10 +85,10 @@ class Vendedores extends Controller {
         $id = $param[0];
 
         if($this->model->delete($id)){
-            echo "Vendedor eliminado correctamente";
+            echo "Vendedor eliminado exitosamente";
         }else{
             // mensaje de error
-            echo "No se pudo eliminar el vendedor";
+            echo "Hubo un error, ¡Intente de nuevo!";
         }
     }
 
@@ -107,7 +105,108 @@ class Vendedores extends Controller {
         $idVendedor = $param[0];
         $vendedor = $this->model->getById($idVendedor);
 
+        session_start();
+        $_SESSION['id_usuario'] = $vendedor->id;
+
         print_r($vendedor);
     }
 
+    // Función para suspender usuarios
+    function suspender($param = null) {
+        $idVendedor = $param[0];
+        $vendedor = $this->model->getByID($idVendedor);
+
+        $tipo = $vendedor->tipo;
+
+        if($tipo == 'usuario') {
+            print_r('La suspención de usuarios solo se puede realizar por un administrador');
+        } else {
+            $valor = $param[1];
+            if($this->model->suspender($idVendedor, $valor)) {
+                echo "bien";
+            } else {
+                echo "error";
+            }
+        }
+    }
+
+    // Actulizar foto de usuario
+    function cambiar_foto() {
+        $id = $_POST['id'];
+
+        if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK) {
+            $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
+            $fileName = $_FILES['uploadedFile']['name'];
+            $fileSize = $_FILES['uploadedFile']['size'];
+            $fileType = $_FILES['uploadedFile']['type'];
+            $fileNameCmps = explode(".", $fileName);
+            $fileExtension = strtolower(end($fileNameCmps));
+
+            $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+
+            $allowedfileExtensions = array('jpg', 'gif', 'png', 'zip', 'txt', 'xls', 'doc');
+            if (in_array($fileExtension, $allowedfileExtensions)) {
+                $uploadFileDir = 'public/fotos_usuarios/';
+                $dest_path = $uploadFileDir . $newFileName;
+                 
+                if(move_uploaded_file($fileTmpPath, $dest_path))
+                {
+                    if($this->model->cambiarFoto($id, $newFileName)) {
+                        echo "bien";
+                    } else {
+                        echo "error";
+                    }
+                    $message ='Foto actualizada exitosamente';
+                }
+                else
+                {
+                  $message = 'Hubo un error, ¡Intente de nuevo!';
+                }
+            }
+        }
+    }
+
+    // Cambiar contraseña
+    function cambiar_contrasenia() {
+        $id = $_POST['id'];
+        $contrasenia = $_POST['contrasenia'];
+
+        if($this->model->cambiarContrasenia($id, $contrasenia)) {
+            echo "bien";
+        } else {
+            echo "error";
+        }
+        $message ='Foto actualizada exitosamente';
+    }
+
+    // Convertir en administrador
+    function convertir_admin() {
+        $id = $_POST['id'];
+        $tipo = $_POST['tipo'];
+
+        if($this->model->convertirAdmin($id, $tipo)) {
+            echo "bien";
+        } else {
+            echo "error";
+        }
+        $message ='Foto actualizada exitosamente';
+    }
+
+    // Login de usuario
+    function iniciar_sesion() {
+        $usuario = $_POST['email'];
+        $contrasenia = $_POST['contrasenia'];
+
+        if($this->model->iniciarSesion($usuario, $contrasenia)) {
+            $vendedor = $this->model->getByEmail($usuario);
+
+            session_start();
+            $_SESSION['id_usuario'] = $vendedor->id;
+            $_SESSION['tipo'] = $vendedor->tipo;
+
+            echo "correcto";
+        } else {
+            echo "no correcto";
+        }
+    }
 }
