@@ -71,6 +71,37 @@ class VendedoresModel extends Model {
         }
     }
 
+    // Trae los datos de un solo vendedor según su email
+    public function getByEmail($email){
+        $item = new Vendedor();
+
+        $query = $this->db->connect()->prepare("SELECT * FROM vendedores WHERE email = :email");
+        try{
+            $query->execute(['email' => $email]);
+
+            while($row = $query->fetch()){
+                $item->id = $row['id'];
+                $item->nombre = $row['nombre'];
+                $item->apellido_paterno = $row['apellido_paterno'];
+                $item->apellido_materno = $row['apellido_materno'];
+                $item->fotografia    = $row['fotografia'];
+                $item->direccion  = $row['direccion'];
+                $item->telefono  = $row['telefono'];
+                $item->email  = $row['email'];
+                $item->fecha_ingreso  = $row['fecha_ingreso'];
+                $item->fecha_administrador  = $row['fecha_administrador'];
+                $item->fecha_validacion  = $row['fecha_validacion'];
+                $item->contrasenia  = $row['contrasenia'];
+                $item->curp  = $row['curp'];
+                $item->tipo  = $row['tipo'];
+            }
+
+            return $item;
+        }catch(PDOException $e){
+            return null;
+        }
+    }
+
     // Agregar nuevo vendedor
     public function insert($datos) {
         // insertar datos en la BD
@@ -191,6 +222,18 @@ class VendedoresModel extends Model {
         }catch(PDOException $e){
             return false;
         }
+    }
+
+    // Iniciar sesión
+    public function iniciarSesion($email, $contrasenia) {
+        $query = $this->db->connect()->prepare("SELECT COUNT(*) AS total FROM vendedores WHERE email = :email AND contrasenia = :contrasenia");
+
+        $query->execute([
+            'email' => $email,
+            'contrasenia' => $contrasenia
+        ]);
+
+        return $query->fetchColumn(); 
     }
 }
 ?>

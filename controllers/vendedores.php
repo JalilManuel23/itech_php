@@ -57,6 +57,8 @@ class Vendedores extends Controller {
 		$fecha_validacion = $_POST['fecha_validacion'];
 		$contrasenia = $_POST['contrasenia'];
 
+        unset($_SESSION['id_usuario']);
+
         if($this->model->update([
             'id' => $id, 
             'nombre' => $nombre, 
@@ -102,6 +104,9 @@ class Vendedores extends Controller {
     function ver($param = null) {
         $idVendedor = $param[0];
         $vendedor = $this->model->getById($idVendedor);
+
+        session_start();
+        $_SESSION['id_usuario'] = $vendedor->id;
 
         print_r($vendedor);
     }
@@ -185,5 +190,23 @@ class Vendedores extends Controller {
             echo "error";
         }
         $message ='Foto actualizada exitosamente';
+    }
+
+    // Login de usuario
+    function iniciar_sesion() {
+        $usuario = $_POST['email'];
+        $contrasenia = $_POST['contrasenia'];
+
+        if($this->model->iniciarSesion($usuario, $contrasenia)) {
+            $vendedor = $this->model->getByEmail($usuario);
+
+            session_start();
+            $_SESSION['id_usuario'] = $vendedor->id;
+            $_SESSION['tipo'] = $vendedor->tipo;
+
+            echo "correcto";
+        } else {
+            echo "no correcto";
+        }
     }
 }
