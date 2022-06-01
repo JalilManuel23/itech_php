@@ -44,7 +44,7 @@
         </div>
       </li>
     </ul>
- <a href="<?php echo constant('URL');?>login" target="_blank">
+ <a href="<?php echo constant('URL');?>login">
    <i class="fas fa-sign-in-alt"></i>
    <p class="d-inline-block text-white"> Iniciar Sesión </p>
   </a> 
