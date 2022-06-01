@@ -202,6 +202,7 @@ class Vendedores extends Controller {
 
             session_start();
             $_SESSION['id_usuario'] = $vendedor->id;
+            $_SESSION['nombre'] = $vendedor->nombre;
             $_SESSION['tipo'] = $tipo;
 
             if($tipo == 'usuario') {

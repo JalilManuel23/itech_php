@@ -26,12 +26,12 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
 
-    <title>Actualizar Imagen de Perfil </title>
+    <title>Administración | ITECH</title>
 </head>
 
 <body>
     <nav class="navbar sticky-top navbar-expand-lg">
-        <a class="navbar-brand" href="#"><img src="../assets/logoitech.png" alt="Logotipo Itech" height="50"> ITECH</a>
+        <a class="navbar-brand" href="#"><img src="<?php echo constant('URL');?>/public/images/logoitech.png" alt="Logotipo Itech" height="50"> ITECH</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon icono-menu"></span>
@@ -60,7 +60,7 @@
     </nav>
 
     <div class="admin-usuario m-5">
-        <h1 class="text-center bienvenido pb-3">¡Bienvenido (nombreUsuario)!</h1>
+        <h1 class="text-center bienvenido pb-3">¡Bienvenido <?php echo $this->nombre; ?>!</h1>
         <h3 class="text-center intro-bienvenida">A continuación se muestra el listado de los vendedores registrados en
             el
             sistema</h3>
@@ -76,11 +76,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Jalil</td>
-                        <td>López</td>
-                        <td>jalils@gmail.com</td>
+                <?php
+                        include_once 'models/vendedor.php';
+                        foreach($this->vendedores as $row){
+                            $vendedor = new Vendedor();
+                            $vendedor = $row; 
+                    ?>
+                    <tr id="fila-<?php echo $vendedor->matricula; ?>">
+                        <td><?php echo $vendedor->id; ?></td>
+                        <td><?php echo $vendedor->nombre; ?></td>
+                        <td><?php echo $vendedor->apellido_paterno ." ".$vendedor->apellido_materno; ?></td>
+                        <td><?php echo $vendedor->email; ?></td>
                         <td>
                             <div class="botones">
                                 <button type="button" class="btn btn-modificar">Modificar</button>
@@ -89,32 +95,8 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Mariela</td>
-                        <td>Hernández</td>
-                        <td>mariela@gmail.com</td>
-                        <td>
-                            <div class="botones">
-                                <button type="button" class="btn btn-modificar">Modificar</button>
-                                <button type="button" class="btn btn-suspender">Suspender</button>
-                                <button type="button" class="btn btn-eliminar">Eliminar</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Paola</td>
-                        <td>Rosales</td>
-                        <td>paolis@gmail.com</td>
-                        <td>
-                            <div class="botones">
-                                <button type="button" class="btn btn-modificar">Modificar</button>
-                                <button type="button" class="btn btn-suspender">Suspender</button>
-                                <button type="button" class="btn btn-eliminar">Eliminar</button>
-                            </div>
-                        </td>
-                    </tr>
+
+                    <?php } ?>                  
                 </tbody>
             </table>
         </div>
