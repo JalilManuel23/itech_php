@@ -10,14 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo constant('URL');?>/public/css/stylesindex.css">
+    <link rel="stylesheet" href="<?php echo constant('URL');?>/public/css/stylespass.css">
     <script src="https://kit.fontawesome.com/4e20857604.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
 <nav class="navbar navbar-expand-lg" style="background-color: #014F86;">
-<a class="navbar-brand" href="index.php">
-    <img src="<?php echo constant('URL');?>/public/images/logoitech.png"  id="logo" width="70" height="65" class="d-inline-block" alt=""> ITECH
+<a class="navbar-brand" href="../main/index.php">
+    <img src="<?php echo constant('URL');?>/public/images/logoitech.png" id="logo" width="70" height="65" class="d-inline-block" alt=""> ITECH
 
   </a>  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white;">
     <span><i class="fas fa-bars"></i></span>
@@ -25,40 +25,34 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Servicios</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-          Nosotros
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Misión</a>
-          <a class="dropdown-item" href="#">Visión</a>
-          <div class="dropdown-divider"></div>
-         
-          <a class="dropdown-item" href="#">Historia</a>
-        </div>
-      </li>
-    </ul>
- <a href="<?php echo constant('URL');?>views/login/index.php" target="_blank">
-   <i class="fas fa-sign-in-alt"></i>
-   <p class="d-inline-block text-white"> Iniciar Sesión </p>
-  </a> 
+         </ul>
+ 
   </div>
 </nav>
 
 <div class="content">
-    <h1 class="titulop">ITECH</h1>
-    <h2 class="slogan">Armando tu equipo ideal</h2>
-    <img src="<?php echo constant('URL');?>/public/images/computing.jpg" class="img-fluid computing" alt="Responsive image">
+    <h1 class="titulop">Cambiar contraseña</h1>
+   
    </div> 
 
+   <form class="passchange">
+  <div class="form-group">
+    <label class="font-weight-bold">Contraseña</label>
+    <input type="pass" class="form-control" required>
+    <small id="passHelp" class="form-text text-muted">Por tu seguridad, cambia la contraseña.</small>
+  </div>
+  <div class="form-group">
+    <label class="font-weight-bold">Confirmar contraseña</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" required>
+</div>
+<div class="text-center"> 
+<button type="submit" id="btnsub" class="btn btn-primary">Cambiar contraseña</button>
+</div>
+  
+</form>
 
-   <div class="footer-basic">
+
+<div class="footer-basic">
         <footer>
             <div class="social"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-snapchat-ghost"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a></div>
             <ul class="list-inline">
