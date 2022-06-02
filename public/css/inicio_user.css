@@ -29,14 +29,14 @@ nav .dropdown-menu a:hover{
     color: white;
 }
 
-.btn-logout{
+/*.btn-logout{
     background-color: #61A5C2;
 }
 
 .btn-logout:hover{
     text-decoration: underline !important;
     font-weight: bold;
-}
+}*/
 
 .icono-menu{
     color: white !important;
@@ -67,3 +67,14 @@ form input:disabled{
     background: #e2f0f8 !important;
     border: 1px solid #a9d6e5 !important;
 }
+
+.btn-modificar {
+    background: #013a63;
+    color: #FFFFFF;
+    margin-right: 0px;
+}
+ .btn-modificar:hover {
+    background: #386274;
+    color: #FFFFFF;
+    margin-right: 0px;
+ }

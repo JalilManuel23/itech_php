@@ -73,31 +73,35 @@ nav .dropdown-menu a:hover {
 
 .botones {
     display: inline;
-
-}
-
-.btn-suspender {
-    background: #ffd166;
-}
-
-.btn-suspender:hover {
-    background: #f5af0d;
 }
 
 .btn-modificar {
     background: #61a5c2;
+    color: #FFFFFF;
+    margin-right: 4px;
 }
-
 .btn-modificar:hover {
     background: #3b7b97;
-    color: white;
+    color: #FFFFFF;
+    margin-right: 4px;
 }
-
 .btn-eliminar {
-    background: #d65869;
+    background: #013a63;
+    color: #FFFFFF;
+    margin-right: 0px;
 }
-
-.btn-eliminar:hover {
-    background: #c2374a;
-    color: white;
+ .btn-eliminar:hover {
+    background: #386274;
+    color: #FFFFFF;
+    margin-right: 0px;
+ }
+.btn-suspender {
+    background: #FFFFFF;
+    color: #013a63;
+    border: 1px solid #013a63 !important;
+}
+.btn-suspender:hover {
+    background: #f2f2f2;
+    color: #013a63;
+    border: 1px solid #013a63;
 }
