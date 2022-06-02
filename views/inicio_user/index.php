@@ -44,9 +44,9 @@
         </button>
 
         <div class="collapse navbar-collapse flex-row-reverse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
+        <ul class="navbar-nav">
                 <li class="nav-item mx-1">
-                    <a class="nav-link" href="#" role="button">Ver Perfil</a>
+                    <a class="nav-link" href="<?php echo constant('URL');?>inicio_user" role="button">Ver Perfil</a>
                 </li>
                 <li class="nav-item dropdown mx-1">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
@@ -54,12 +54,12 @@
                         Configuración
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Cambiar imagen de perfil</a>
-                        <a class="dropdown-item" href="#">Cambiar contraseña</a>
+                        <a class="dropdown-item" href="<?php echo constant('URL');?>cambiar_foto/">Cambiar imagen de perfil</a>
+                        <a class="dropdown-item" href="<?php echo constant('URL');?>cambiar_contrasenia">Cambiar contraseña</a>
                     </div>
                 </li>
                 <li class="nav-item mx-2">
-                    <button type="button" class="btn btn-logout">Cerrar Sesión</button>
+                    <a type="button" class="btn btn-logout"  href="<?php echo constant('URL');?>vendedores/cerrar_sesion">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
