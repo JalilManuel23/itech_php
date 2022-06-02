@@ -68,6 +68,15 @@
     <div class="admin-usuario m-5">
         <h1 class="text-center bienvenido pb-3">¡Bienvenido de nuevo, <?php echo $this->nombre; ?>! </h1>
         <h3 class="text-center intro-bienvenida">A continuación te mostramos la información guardada en tu perfil</h3>
+        <?php
+            if($this->contrasenia_default) {
+        ?>
+                <div class="alert alert-warning" role="alert">
+                    ¡Urgente!, tu contraseña es: <?php echo $this->contrasenia; ?>, es necesario cambiar contraseña. <a href="<?php echo constant('URL');?>cambiar_contrasenia">Cambiar</a>
+                </div>
+        <?php
+            }
+        ?>
         <div class="d-flex justify-content-center mx-3 my-4">
             <form class="info-user my-3 form-info-user p-5">
                 <div class="form-row">

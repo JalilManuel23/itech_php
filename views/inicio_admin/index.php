@@ -64,6 +64,16 @@
         <h3 class="text-center intro-bienvenida">A continuación se muestra el listado de los vendedores registrados en
             el
             sistema</h3>
+
+        <?php
+            if($this->contrasenia_default) {
+        ?>
+                <div class="alert alert-warning" role="alert">
+                    ¡Urgente!, tu contraseña es: <?php echo $this->contrasenia; ?>, es necesario cambiar contraseña. <a href="<?php echo constant('URL');?>cambiar_contrasenia">Cambiar</a>
+                </div>
+        <?php
+            }
+        ?>
         <div class=" div-lista-vendedores .table-responsive m-5 p-4">
             <table class="table">
                 <thead>

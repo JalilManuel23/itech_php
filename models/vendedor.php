@@ -15,6 +15,7 @@ class Vendedor{
     public $curp;
     public $tipo;
     public $estatus;
+    public $contrasenia_default;
 }
 
 ?>

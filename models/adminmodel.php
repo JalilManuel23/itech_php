@@ -32,6 +32,7 @@ class AdminModel extends Model {
                 $item->curp  = $row['curp'];
                 $item->estatus  = $row['estatus'];
                 $item->tipo  = $row['tipo'];
+                $item->contrasenia_default  = $row['contrasenia_default'];
 
                 array_push($items, $item);
             }
@@ -66,6 +67,7 @@ class AdminModel extends Model {
                 $item->curp  = $row['curp'];
                 $item->tipo  = $row['tipo'];
                 $item->estatus  = $row['estatus'];
+                $item->contrasenia_default  = $row['contrasenia_default'];
             }
 
             return $item;
@@ -98,6 +100,7 @@ class AdminModel extends Model {
                 $item->curp  = $row['curp'];
                 $item->tipo  = $row['tipo'];
                 $item->estatus  = $row['estatus'];
+                $item->contrasenia_default  = $row['contrasenia_default'];
             }
 
             return $item;
