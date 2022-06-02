@@ -31,6 +31,7 @@ class AdminModel extends Model {
                 $item->contrasenia  = $row['contrasenia'];
                 $item->curp  = $row['curp'];
                 $item->estatus  = $row['estatus'];
+                $item->tipo  = $row['tipo'];
 
                 array_push($items, $item);
             }

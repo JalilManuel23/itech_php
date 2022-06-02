@@ -188,11 +188,10 @@ class Vendedores extends Controller {
     }
 
     // Convertir en administrador
-    function convertir_admin() {
-        $id = $_POST['id'];
-        $tipo = $_POST['tipo'];
+    function convertir_admin($param = null) {
+        $id = $param[0];
 
-        if($this->model->convertirAdmin($id, $tipo)) {
+        if($this->model->convertirAdmin($id, 'admin')) {
             echo "bien";
         } else {
             echo "error";

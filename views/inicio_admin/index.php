@@ -102,6 +102,13 @@
                                 }
                                 ?>
                                 <a href="<?php echo constant('URL');?>vendedores/eliminar/<?php echo $vendedor->id; ?>" type="button" class="btn btn-eliminar">Eliminar</a>
+                                <?php
+                                if($vendedor->tipo == 'usuario') {
+                                    ?>
+                                    <a href="<?php echo constant('URL');?>vendedores/convertir_admin/<?php echo $vendedor->id; ?>" type="button" class="btn btn-modificar">Hacer admin</a>
+                                <?php
+                                } 
+                                ?> 
                             </div>
                         </td>
                     </tr>
