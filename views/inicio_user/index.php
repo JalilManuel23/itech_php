@@ -26,6 +26,12 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
 
+    <style>
+        .default-img {
+            border-radius: 50%;
+        }
+    </style>
+
     <title>Administración Usuario </title>
 </head>
 
@@ -60,7 +66,7 @@
     </nav>
 
     <div class="admin-usuario m-5">
-        <h1 class="text-center bienvenido pb-3">¡Bienvenido de nuevo, (nombreUsuario)! </h1>
+        <h1 class="text-center bienvenido pb-3">¡Bienvenido de nuevo, <?php echo $this->nombre; ?>! </h1>
         <h3 class="text-center intro-bienvenida">A continuación te mostramos la información guardada en tu perfil</h3>
         <div class="d-flex justify-content-center mx-3 my-4">
             <form class="info-user my-3 form-info-user p-5">
@@ -69,39 +75,40 @@
                         <label for="">Imagen de Perfil: </label>
                     </div>
                     <div class="col-12 mb-3 d-flex justify-content-center">
-                        <img src="<?php echo constant('URL'); ?>/public/assets/default-user.png" alt="Foto de Perfil de Usuario" class="default-img" width="150">
+                        <img src="<?php echo constant('URL'); ?>/public/fotos_usuarios/<?php echo $this->foto; ?>" alt="Foto de Perfil de Usuario" class="default-img"
+                            width="150">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-6 mb-2">
                         <label for="">Nombre:</label>
-                        <input type="text" class="form-control" id="" placeholder="Nombre" disabled>
+                        <input type="text" class="form-control" id="" placeholder="Nombre" disabled value="<?php echo $this->datos_user->nombre; ?>">
                     </div>
                     <div class="col-6 mb-2">
                         <label for="">Apellidos:</label>
-                        <input type="text" class="form-control" id="" placeholder="Apellidos" disabled>
+                        <input type="text" class="form-control" id="" placeholder="Apellidos" disabled value="<?php echo $this->datos_user->apellido_paterno . " " . $this->datos_user->apellido_materno; ?>">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-12 mb-2">
                         <label for="">Correo Electrónico:</label>
-                        <input type="text" class="form-control" id="" placeholder="Correo" disabled>
+                        <input type="text" class="form-control" id="" placeholder="Correo" disabled value="<?php echo $this->datos_user->email; ?>">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-6 mb-2">
                         <label for="">CURP:</label>
-                        <input type="text" class="form-control" id="" placeholder="CURP" disabled>
+                        <input type="text" class="form-control" id="" placeholder="CURP" disabled value="<?php echo $this->datos_user->curp; ?>">
                     </div>
                     <div class="col-6 mb-2">
                         <label for="">Teléfono:</label>
-                        <input type="text" class="form-control" id="" placeholder="Teléfono" disabled>
+                        <input type="text" class="form-control" id="" placeholder="Teléfono" disabled value="<?php echo $this->datos_user->telefono; ?>">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-12 mb-2">
                         <label for="">Dirección:</label>
-                        <input type="text" class="form-control" id="" placeholder="Dirección" disabled>
+                        <input type="text" class="form-control" id="" placeholder="Dirección" disabled value="<?php echo $this->datos_user->direccion; ?>">
                     </div>
                 </div>
             </form>
