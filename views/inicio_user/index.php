@@ -32,7 +32,7 @@
         }
     </style>
 
-    <title>Administración Usuario </title>
+    <title>Administración Usuario</title>
 </head>
 
 <body>

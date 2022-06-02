@@ -116,7 +116,7 @@
                         <input name="id" type="hidden" value="<?php echo $this->datos_user->id; ?>">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-modificar">Guardar</button>
+                <button type="submit" class="btn btn-md btn-modificar" title="Presione para guardar">Guardar</button>
             </form>
         </div>
 

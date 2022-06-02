@@ -79,8 +79,7 @@
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Nombre (s)</th>
-                        <th scope="col">Apellidos</th>
+                        <th scope="col">Nombre completo</th>
                         <th scope="col">Correo Electrónico</th>
                         <th scope="col">Acciones</th>
                     </tr>
@@ -94,28 +93,28 @@
                     ?>
                     <tr id="fila-<?php echo $vendedor->matricula; ?>">
                         <td><?php echo $vendedor->id; ?></td>
-                        <td><?php echo $vendedor->nombre; ?></td>
-                        <td><?php echo $vendedor->apellido_paterno ." ".$vendedor->apellido_materno; ?></td>
+                        <td><?php echo $vendedor->nombre ." ". $vendedor->apellido_paterno ." ".$vendedor->apellido_materno; ?></td>
                         <td><?php echo $vendedor->email; ?></td>
                         <td>
                             <div class="botones">
-                                <a href="<?php echo constant('URL');?>usuario_editar/index/<?php echo $vendedor->id;?>" type="button" class="btn btn-modificar">Modificar</button>
+                                <a href="<?php echo constant('URL');?>usuario_editar/index/<?php echo $vendedor->id;?>" type="button" class="btn btn-sm btn-modificar" style="" title="Presione para modificar">Modificar</button>
+                                
+                                <a href="<?php echo constant('URL');?>vendedores/eliminar/<?php echo $vendedor->id; ?>" type="button" class="btn btn-sm btn-eliminar" title="Presione para eliminar">Eliminar</a>
                                 <?php
                                 if($vendedor->estatus == 1) {
                                 ?>
-                                    <a href="<?php echo constant('URL');?>vendedores/suspender/<?php echo $vendedor->id; ?>/0" type="button" class="btn btn-suspender">Suspender</a>
+                                <a href="<?php echo constant('URL');?>vendedores/suspender/<?php echo $vendedor->id; ?>/0" type="button" class="btn btn-sm btn-suspender" title="Presione para suspender vendedor">Suspender</a>
                                 <?php
                                 } else {
                                 ?>
-                                    <a href="<?php echo constant('URL');?>vendedores/suspender/<?php echo $vendedor->id; ?>/1" type="button" class="btn btn-suspender">Activar</a>
+                                    <a href="<?php echo constant('URL');?>vendedores/suspender/<?php echo $vendedor->id; ?>/1" type="button" class="btn btn-sm btn-suspender" title="Presione para activar vendedor">Activar</a>
                                 <?php
                                 }
                                 ?>
-                                <a href="<?php echo constant('URL');?>vendedores/eliminar/<?php echo $vendedor->id; ?>" type="button" class="btn btn-eliminar">Eliminar</a>
                                 <?php
                                 if($vendedor->tipo == 'usuario') {
                                     ?>
-                                    <a href="<?php echo constant('URL');?>vendedores/convertir_admin/<?php echo $vendedor->id; ?>" type="button" class="btn btn-modificar">Hacer admin</a>
+                                    <a href="<?php echo constant('URL');?>vendedores/convertir_admin/<?php echo $vendedor->id; ?>" type="button" class="btn btn-sm btn-suspender" title="Presione para hacer admin">Hacer admin</a>
                                 <?php
                                 } 
                                 ?> 
