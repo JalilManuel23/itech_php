@@ -208,6 +208,14 @@ class Vendedores extends Controller {
         if($this->model->iniciarSesion($usuario, $contrasenia)) {
             $vendedor = $this->model->getByEmail($usuario);
 
+            if($vendedor->estatus == 0) {
+            ?>
+                <script>
+                    window.location.replace("<?php echo constant('URL');?>");
+                </script>
+            <?php
+            }
+
             $tipo = $vendedor->tipo;
 
             session_start();

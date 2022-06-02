@@ -96,6 +96,7 @@ class VendedoresModel extends Model {
                 $item->contrasenia  = $row['contrasenia'];
                 $item->curp  = $row['curp'];
                 $item->tipo  = $row['tipo'];
+                $item->estatus  = $row['estatus'];
             }
 
             return $item;
