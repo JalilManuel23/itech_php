@@ -41,19 +41,15 @@ class Vendedores extends Controller {
 
     // Función para editar vendedor
     function editar(){
-		$id = $_POST['id'];
+        $id = $_POST['id'];
+
 		$curp = $_POST['curp'];
 		$nombre = $_POST['nombre'];
         $apellido_paterno = $_POST['apellido_paterno'];
 		$apellido_materno = $_POST['apellido_materno'];
-		$fotografia = $_POST['fotografia'];
 		$direccion = $_POST['direccion'];
 		$telefono = $_POST['telefono'];
 		$email = $_POST['email'];
-		$fecha_ingreso = $_POST['fecha_ingreso'];
-		$fecha_administrador = $_POST['fecha_administrador'];
-		$fecha_validacion = $_POST['fecha_validacion'];
-		$contrasenia = $_POST['contrasenia'];
 
         unset($_SESSION['id_usuario']);
 
@@ -62,19 +58,16 @@ class Vendedores extends Controller {
             'nombre' => $nombre, 
             'apellido_paterno' => $apellido_paterno, 
             'apellido_materno' => $apellido_materno, 
-            'fotografia' => $fotografia,
             'direccion' => $direccion,
             'telefono' => $telefono,
             'email' => $email,
-            'fecha_ingreso' => $fecha_ingreso,
-            'fecha_administrador' => $fecha_administrador,
-            'fecha_validacion' => $fecha_validacion,
-            'contrasenia' => $contrasenia,
             'curp' => $curp
         ])){            
-            echo "Vendedor actualizado exitosamente";
-        }else{
-            echo "Hubo un error, ¡Intente de nuevo!";
+            ?>
+            <script>
+                window.location.replace("<?php echo constant('URL');?>admin");
+            </script>
+        <?php
         }
     }
 

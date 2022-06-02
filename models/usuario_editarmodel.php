@@ -2,7 +2,7 @@
 
 include_once 'models/vendedor.php';
 
-class VendedoresModel extends Model {
+class Usuario_editarmodel extends Model {
     public function __construct() {
         parent::__construct();
     }
@@ -133,7 +133,6 @@ class VendedoresModel extends Model {
 
         try{
             $query->execute([
-                'id' => $item['id'], 
                 'nombre' => $item['nombre'], 
                 'apellido_paterno' => $item['apellido_paterno'], 
                 'apellido_materno' => $item['apellido_materno'], 

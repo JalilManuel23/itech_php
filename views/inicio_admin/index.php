@@ -48,7 +48,7 @@
                         Configuración
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="<?php echo constant('URL');?>cambiar_foto">Cambiar imagen de perfil</a>
+                        <a class="dropdown-item" href="<?php echo constant('URL');?>cambiar_foto/">Cambiar imagen de perfil</a>
                         <a class="dropdown-item" href="<?php echo constant('URL');?>cambiar_contrasenia">Cambiar contraseña</a>
                     </div>
                 </li>
@@ -89,7 +89,7 @@
                         <td><?php echo $vendedor->email; ?></td>
                         <td>
                             <div class="botones">
-                                <button type="button" class="btn btn-modificar">Modificar</button>
+                                <a href="<?php echo constant('URL');?>usuario_editar/index/<?php echo $vendedor->id;?>" type="button" class="btn btn-modificar">Modificar</button>
                                 <?php
                                 if($vendedor->estatus == 1) {
                                 ?>
