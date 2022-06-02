@@ -16,7 +16,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg" style="background-color: #014F86;">
-<a class="navbar-brand" href="<?php echo constant('URL');?>">
+<a class="navbar-brand"  title="ITech Company" href="<?php echo constant('URL');?>">
     <img src="<?php echo constant('URL');?>/public/images/logoitech.png" id="logo" width="70" height="65" class="d-inline-block" alt=""> ITECH
 
   </a>  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white;">
@@ -33,14 +33,15 @@
 
 <section class="forms-section">
   <h1 class="section-title">¡Accede a tu cuenta!</h1>
-  <div class="forms">
+  <div class="forms" >
     <div class="form-wrapper is-active">
       <button type="button" class="switcher switcher-login">
         Iniciar Sesión
         <span class="underline"></span>
       </button>
-      <form class="form form-login" method="POST" action="<?php echo constant('URL');?>vendedores/iniciar_sesion">
+      <form class="form form-login pt-5" method="POST" action="<?php echo constant('URL');?>vendedores/iniciar_sesion">
         <fieldset>
+          <p class="pt-2" style="color:#9c9c9c;">Ingresa tu usuario y contraseña para acceder a tu cuenta</p>
           <legend>Ingresa tu usuario y contraseña para acceder a tu cuenta</legend>
           <div class="input-block">
             <label for="login-email">Correo Electrónico:</label>
@@ -51,9 +52,10 @@
             <input id="login-password" type="password" required name="contrasenia">
           </div>
         </fieldset>
-        <button type="submit" class="btn-login">Ingresar</button>
+        <button type="submit" class="btn-login" title="Presione para Iniciar Sesión">Ingresar</button>
       </form>
     </div>
+
     <div class="form-wrapper">
       <button type="button" class="switcher switcher-signup">
         Registrarse
@@ -62,60 +64,61 @@
       <form class="form form-signup" action="<?php echo constant('URL');?>/vendedores/agregar" method="POST">
         <fieldset>
           <legend>Por favor ingresa los datos que se te piden</legend>
-          
+          <p class="pt-2" style="color:#9c9c9c;">Ingresa los datos que se te piden</p>
           <div class="row">
-
-        
-          <div class="input-block col">
-            <label for="signup-name">Nombre:</label>
-            <input id="signup-name" type="text" required name="nombre">
-          </div>
-          <div class="input-block col">
-            <label for="signup-last">Apellido paterno:</label>
-            <input id="signup-last" type="text" required name="apellido_paterno">
-          </div>
-          <div class="input-block col">
-            <label for="signup-last">Apellido materno:</label>
-            <input id="signup-last" type="text" required name="apellido_materno">
-          </div>
-</div> 
-
-          <div class="input-block">
-            <label for="signup-email">Correo Electrónico:</label>
-            <input id="signup-email" type="email" required name="email">
+            <div class="input-block col">
+              <label for="signup-name">Nombre (s):</label>
+              <input id="signup-name" type="text" required name="nombre">
+            </div>
           </div>
           <div class="row">
-          <div class="input-block col">
-            <label for="signup-curp">CURP:</label>
-            <input maxlength="18" id="signup-curp" type="text" required name="curp">
+            <div class="input-block col">
+              <label for="signup-last">Apellido paterno:</label>
+              <input id="signup-last" type="text" required name="apellido_paterno">
+            </div>
+            <div class="input-block col">
+              <label for="signup-last">Apellido materno:</label>
+              <input id="signup-last" type="text" required name="apellido_materno">
+            </div>
           </div>
-          <div class="input-block col">
-            <label for="signup-tel">Teléfono:</label>
-            <input id="signup-tel" type="tel"  required name="telefono">
+          <div class="row">
+            <div class="input-block col">
+              <label for="signup-email">Correo Electrónico:</label>
+              <input id="signup-email" type="email" required name="email" placeholder="Ej. ejemplo@gmail.com">
+            </div>
           </div>
+          <div class="row">
+            <div class="input-block col">
+              <label for="signup-curp">CURP:</label>
+              <input maxlength="18" id="signup-curp" type="text" required name="curp">
+            </div>
+            <div class="input-block col">
+              <label for="signup-tel">Teléfono:</label>
+              <input id="signup-tel" type="tel"  required name="telefono">
+            </div>
           </div>
           <div class="input-block">
             <label for="signup-add">Dirección:</label>
             <input id="signup-add" type="text" required name="direccion">
           </div>
         </fieldset>
-        <button type="submit" class="btn-login">Continuar</button>
+        <button type="submit" class="btn-login" title="Presione para registrarse">Continuar</button>
       </form>
     </div>
   </div>
 </section>
 
 <div class="footer-basic">
-        <footer>
-            <div class="social"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-snapchat-ghost"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a></div>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Inicio</a></li>
-                <li class="list-inline-item"><a href="#">Servicios</a></li>
-                <li class="list-inline-item"><a href="#">Nosotros</a></li>
-            </ul>
-            <p class="copyright">ITECH COMPANY © 2022</p>
-        </footer>
-    </div>
+  <footer>
+    <div class="social"><a href="#" data-toggle="tooltip" data-placement="bottom" title=" Itech | Síguenos en Instagram"><i class="fab fa-instagram"></i></a><a href="#"data-toggle="tooltip" data-placement="bottom" title="Itech | Síguenos en Snapchat"><i class="fab fa-snapchat-ghost"></i></a><a href="#" data-toggle="tooltip" data-placement="bottom" title="Itech | Síguenos en Twitter"><i class="fab fa-twitter"></i></a><a href="#" data-toggle="tooltip" data-placement="bottom" title="Itech | Síguenos en Facebook"><i class="fab fa-facebook-f"></i></a></div>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Inicio</a></li>
+        <li class="list-inline-item"><a href="#">Servicios</a></li>
+        <li class="list-inline-item"><a href="#">Nosotros</a></li>
+      </ul>
+      <p class="copyright">ITECH COMPANY © 2022</p>
+  </footer>
+</div>
 
     
 </body>
@@ -138,6 +141,8 @@
 
     gsap.from("#logo", {duration: 3, x: 300, opacity: 0, scale: 0.5});
 </script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="<?php echo constant('URL');?>/public/js/alertas.js"></script>
 
 
 </html>
