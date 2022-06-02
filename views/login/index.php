@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
+    <title>Itech | Inicio Sesión</title>
+    <link rel="shortcut icon" href="<?php echo constant('URL');?>/public/images/logoitech.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">  <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +42,7 @@
       </button>
       <form class="form form-login pt-5" method="POST" action="<?php echo constant('URL');?>vendedores/iniciar_sesion">
         <fieldset>
-          <p class="pt-2" style="color:#9c9c9c;">Ingresa tu usuario y contraseña para acceder a tu cuenta</p>
+          <p class="pt-2" style="color:#9c9c9c; font-size:14px;">Ingresa tu usuario y contraseña para acceder a tu cuenta</p>
           <legend>Ingresa tu usuario y contraseña para acceder a tu cuenta</legend>
           <div class="input-block">
             <label for="login-email">Correo Electrónico:</label>
@@ -64,7 +65,7 @@
       <form class="form form-signup" action="<?php echo constant('URL');?>/vendedores/agregar" method="POST">
         <fieldset>
           <legend>Por favor ingresa los datos que se te piden</legend>
-          <p class="pt-2" style="color:#9c9c9c;">Ingresa los datos que se te piden</p>
+          <p class="pt-2" style="color:#9c9c9c; font-size:14px;">Ingresa los datos que se te piden</p>
           <div class="row">
             <div class="input-block col">
               <label for="signup-name">Nombre (s):</label>
