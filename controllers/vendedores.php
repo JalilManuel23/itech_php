@@ -260,5 +260,15 @@ class Vendedores extends Controller {
         <?php
         }
     }
+
+    // Función para cerrar sesión
+    function cerrar_sesion() {
+        session_destroy();
+        ?>
+        <script>
+            window.location.replace("<?php echo constant('URL');?>");
+        </script>
+        <?php
+    }
 }
 ?>

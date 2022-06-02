@@ -53,7 +53,7 @@
                     </div>
                 </li>
                 <li class="nav-item mx-2">
-                    <button type="button" class="btn btn-logout">Cerrar Sesión</button>
+                    <a type="button" class="btn btn-logout"  href="<?php echo constant('URL');?>vendedores/cerrar_sesion">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
