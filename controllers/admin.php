@@ -16,6 +16,8 @@ class Admin extends Controller {
         $this->view->id_usuario = $_SESSION['id_usuario'];
         $this->view->nombre = $_SESSION['nombre'];
         $this->view->tipo = $_SESSION['tipo'];
+        $this->view->contrasenia_default = $_SESSION['contrasenia_default'];
+        $this->view->contrasenia = $_SESSION['contrasenia'];
 
         $this->view->render('inicio_admin/index');
     }

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Itech | Inicio</title>
+    <link rel="shortcut icon" href="<?php echo constant('URL');?>/public/images/logoitech.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">  <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +17,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg" style="background-color: #014F86;">
-<a class="navbar-brand" href="index.php">
+<a class="navbar-brand" href="index.php" title="Itech Company">
     <img src="<?php echo constant('URL');?>/public/images/logoitech.png"  id="logo" width="70" height="65" class="d-inline-block" alt=""> ITECH
 
   </a>  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white;">
@@ -44,9 +45,9 @@
         </div>
       </li>
     </ul>
- <a href="<?php echo constant('URL');?>login">
+ <a href="<?php echo constant('URL');?>login" title="Presione para Iniciar Sesión">
    <i class="fas fa-sign-in-alt"></i>
-   <p class="d-inline-block text-white"> Iniciar Sesión </p>
+   <p class="d-inline-block text-white">Iniciar Sesión</p>
   </a> 
   </div>
 </nav>
@@ -60,7 +61,7 @@
 
    <div class="footer-basic">
         <footer>
-            <div class="social"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-snapchat-ghost"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a></div>
+        <div class="social"><a href="#" data-toggle="tooltip" data-placement="bottom" title=" Itech | Síguenos en Instagram"><i class="fab fa-instagram"></i></a><a href="#"data-toggle="tooltip" data-placement="bottom" title="Itech | Síguenos en Snapchat"><i class="fab fa-snapchat-ghost"></i></a><a href="#" data-toggle="tooltip" data-placement="bottom" title="Itech | Síguenos en Twitter"><i class="fab fa-twitter"></i></a><a href="#" data-toggle="tooltip" data-placement="bottom" title="Itech | Síguenos en Facebook"><i class="fab fa-facebook-f"></i></a></div>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">Inicio</a></li>
                 <li class="list-inline-item"><a href="#">Servicios</a></li>

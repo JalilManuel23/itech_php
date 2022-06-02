@@ -65,6 +65,7 @@ class Inicio_userModel extends Model {
                 $item->curp  = $row['curp'];
                 $item->tipo  = $row['tipo'];
                 $item->estatus  = $row['estatus'];
+                $item->contrasenia_default  = $row['contrasenia_default'];
             }
 
             return $item;

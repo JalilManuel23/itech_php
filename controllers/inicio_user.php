@@ -13,6 +13,8 @@ class Inicio_user extends Controller {
         $this->view->nombre = $_SESSION['nombre'];
         $this->view->tipo = $_SESSION['tipo'];
         $this->view->foto = $_SESSION['foto'];
+        $this->view->contrasenia_default = $_SESSION['contrasenia_default'];
+        $this->view->contrasenia = $_SESSION['contrasenia'];
 
 		$datos_user = $this->model->getById($_SESSION['id_usuario']);
 

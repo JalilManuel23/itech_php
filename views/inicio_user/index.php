@@ -44,9 +44,9 @@
         </button>
 
         <div class="collapse navbar-collapse flex-row-reverse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
+        <ul class="navbar-nav">
                 <li class="nav-item mx-1">
-                    <a class="nav-link" href="#" role="button">Ver Perfil</a>
+                    <a class="nav-link" href="<?php echo constant('URL');?>inicio_user" role="button">Ver Perfil</a>
                 </li>
                 <li class="nav-item dropdown mx-1">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
@@ -54,12 +54,12 @@
                         Configuración
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Cambiar imagen de perfil</a>
-                        <a class="dropdown-item" href="#">Cambiar contraseña</a>
+                        <a class="dropdown-item" href="<?php echo constant('URL');?>cambiar_foto/">Cambiar imagen de perfil</a>
+                        <a class="dropdown-item" href="<?php echo constant('URL');?>cambiar_contrasenia">Cambiar contraseña</a>
                     </div>
                 </li>
                 <li class="nav-item mx-2">
-                    <button type="button" class="btn btn-logout">Cerrar Sesión</button>
+                    <a type="button" class="btn btn-logout"  href="<?php echo constant('URL');?>vendedores/cerrar_sesion">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
@@ -68,6 +68,15 @@
     <div class="admin-usuario m-5">
         <h1 class="text-center bienvenido pb-3">¡Bienvenido de nuevo, <?php echo $this->nombre; ?>! </h1>
         <h3 class="text-center intro-bienvenida">A continuación te mostramos la información guardada en tu perfil</h3>
+        <?php
+            if($this->contrasenia_default) {
+        ?>
+                <div class="alert alert-warning" role="alert">
+                    ¡Urgente!, tu contraseña es: <?php echo $this->contrasenia; ?>, es necesario cambiar contraseña. <a href="<?php echo constant('URL');?>cambiar_contrasenia">Cambiar</a>
+                </div>
+        <?php
+            }
+        ?>
         <div class="d-flex justify-content-center mx-3 my-4">
             <form class="info-user my-3 form-info-user p-5">
                 <div class="form-row">

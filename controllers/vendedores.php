@@ -21,7 +21,8 @@ class Vendedores extends Controller {
 		$direccion = $_POST['direccion'];
 		$telefono = $_POST['telefono'];
 		$email = $_POST['email'];
-		$contrasenia = generarContrasenia(8);;
+		$contrasenia = generarContrasenia(8);
+
 
         if($this->model->insert([
             'nombre' => $nombre, 
@@ -33,9 +34,21 @@ class Vendedores extends Controller {
             'contrasenia' => $contrasenia,
             'curp' => $curp
         ])) {
-            echo "Vendedor agregado exitosamente";
-        } else {
-            echo "Hubo un error, ¡Intente de nuevo!";
+            $vendedor = $this->model->getByEmail($email);
+
+            session_start();
+            $_SESSION['id_usuario'] = $vendedor->id;
+            $_SESSION['nombre'] = $vendedor->nombre;
+            $_SESSION['tipo'] = $tipo;
+            $_SESSION['foto'] = $vendedor->fotografia;
+            $_SESSION['contrasenia_default'] = $vendedor->contrasenia_default;
+            $_SESSION['contrasenia'] = $vendedor->contrasenia;
+
+            ?>
+                <script>
+                    window.location.replace("<?php echo constant('URL');?>inicio_user");
+                </script>
+            <?php
         }
 	}
 
@@ -174,7 +187,7 @@ class Vendedores extends Controller {
             if($this->model->cambiarContrasenia($id, $contrasenia)) {
                 ?>
                 <script>
-                    window.location.replace("<?php echo constant('URL');?>admin");
+                    window.location.replace("<?php echo constant('URL');?>vendedores/cerrar_sesion");
                 </script>
                 <?php
             } 
@@ -192,11 +205,12 @@ class Vendedores extends Controller {
         $id = $param[0];
 
         if($this->model->convertirAdmin($id, 'admin')) {
-            echo "bien";
-        } else {
-            echo "error";
-        }
-        $message ='Foto actualizada exitosamente';
+            ?>
+            <script>
+                window.location.replace("<?php echo constant('URL');?>admin");
+            </script>
+            <?php
+        } 
     }
 
     // Login de usuario
@@ -222,6 +236,8 @@ class Vendedores extends Controller {
             $_SESSION['nombre'] = $vendedor->nombre;
             $_SESSION['tipo'] = $tipo;
             $_SESSION['foto'] = $vendedor->fotografia;
+            $_SESSION['contrasenia_default'] = $vendedor->contrasenia_default;
+            $_SESSION['contrasenia'] = $vendedor->contrasenia;
 
             if($tipo == 'usuario') {
             ?>
@@ -243,6 +259,16 @@ class Vendedores extends Controller {
             </script>
         <?php
         }
+    }
+
+    // Función para cerrar sesión
+    function cerrar_sesion() {
+        session_destroy();
+        ?>
+        <script>
+            window.location.replace("<?php echo constant('URL');?>");
+        </script>
+        <?php
     }
 }
 ?>
