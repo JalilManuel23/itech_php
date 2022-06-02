@@ -187,7 +187,7 @@ class Vendedores extends Controller {
             if($this->model->cambiarContrasenia($id, $contrasenia)) {
                 ?>
                 <script>
-                    window.location.replace("<?php echo constant('URL');?>admin");
+                    window.location.replace("<?php echo constant('URL');?>vendedores/cerrar_sesion");
                 </script>
                 <?php
             } 
