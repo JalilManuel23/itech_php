@@ -23,8 +23,6 @@ class Vendedores extends Controller {
 		$email = $_POST['email'];
 		$contrasenia = generarContrasenia(8);
 
-        session_start();
-        $_SESSION['contrasenia'] = $contrasenia;
 
         if($this->model->insert([
             'nombre' => $nombre, 
@@ -36,6 +34,16 @@ class Vendedores extends Controller {
             'contrasenia' => $contrasenia,
             'curp' => $curp
         ])) {
+            $vendedor = $this->model->getByEmail($email);
+
+            session_start();
+            $_SESSION['id_usuario'] = $vendedor->id;
+            $_SESSION['nombre'] = $vendedor->nombre;
+            $_SESSION['tipo'] = $tipo;
+            $_SESSION['foto'] = $vendedor->fotografia;
+            $_SESSION['contrasenia_default'] = $vendedor->contrasenia_default;
+            $_SESSION['contrasenia'] = $vendedor->contrasenia;
+
             ?>
                 <script>
                     window.location.replace("<?php echo constant('URL');?>inicio_user");
