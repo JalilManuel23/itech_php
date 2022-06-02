@@ -32,19 +32,25 @@
 
 <div class="content">
     <h1 class="titulop">Cambiar contraseña</h1>
+
+    <?php
+      if(isset($this->mensaje)) {
+        echo $this->mensaje;
+      }
+    ?>
    
    </div> 
 
    <form class="passchange" method="POST" action="<?php echo constant('URL');?>vendedores/cambiar_contrasenia">
   <div class="form-group">
     <label class="font-weight-bold">Contraseña</label>
-    <input type="pass" class="form-control" required>
+    <input type="password" class="form-control" required id="pass1" name="contrasenia2">
     <small id="passHelp" class="form-text text-muted">Por tu seguridad, cambia la contraseña.</small>
   </div>
   <div class="form-group">
     <label class="font-weight-bold">Confirmar contraseña</label>
     <input type="hidden" name="id" value=<?php echo $this->id;?>>
-    <input type="password" class="form-control" id="exampleInputPassword1" required name="contrasenia">
+    <input type="password" class="form-control" id="exampleInputPassword1" required name="contrasenia" id="pass2">
 </div>
 <div class="text-center"> 
 <button type="submit" id="btnsub" class="btn btn-primary">Cambiar contraseña</button>

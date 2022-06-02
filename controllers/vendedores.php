@@ -175,15 +175,23 @@ class Vendedores extends Controller {
     function cambiar_contrasenia() {
         $id = $_POST['id'];
         $contrasenia = $_POST['contrasenia'];
+        $contrasenia2 = $_POST['contrasenia2'];
 
-        if($this->model->cambiarContrasenia($id, $contrasenia)) {
+        if($contrasenia == $contrasenia2) {
+            if($this->model->cambiarContrasenia($id, $contrasenia)) {
+                ?>
+                <script>
+                    window.location.replace("<?php echo constant('URL');?>admin");
+                </script>
+                <?php
+            } 
+        } else {
             ?>
             <script>
-                window.location.replace("<?php echo constant('URL');?>admin");
+                window.location.replace("<?php echo constant('URL');?>cambiar_contrasenia/fail");
             </script>
             <?php
-        } 
-        $message ='Foto actualizada exitosamente';
+        }
     }
 
     // Convertir en administrador
